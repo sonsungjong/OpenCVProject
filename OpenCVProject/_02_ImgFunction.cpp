@@ -70,11 +70,13 @@ int main() {
 /*
 	string path = "../Resources/test.png"
 	Mat img = imread(path);
-	Mat imgGray, imgBlur, imgCanny, imgDil, imgErode;
+	Mat imgGray, imgBlur, imgCanny, imgDil, imgErode, imgBil, imgMed;
 
-	cvtColor(img, imgGray, COLOR_BGR2GRAY);
-	GaussianBlur(img, imgBlur, Size(3,3), 3, 0);
-	Canny(imgBlur, imgCanny, 25, 75);
+	cvtColor(img, imgGray, COLOR_BGR2GRAY);		// 색상변경
+	GaussianBlur(img, imgBlur, Size(3,3), 3, 0);			// 가우시안 블러 적용 (src, dst, 커널크기(x,y), borderType)
+	bilateralFilter(img, imgBil, 5, 250, 10);			// 양측 필터 적용
+	medianBlur(img, imgMed, 3);					// 중앙값 흐림 적용
+	Canny(imgBlur, imgCanny, 25, 75);			// (임계값1, 임계값1보다 큰 임계값2)
 
 	Mat kernel = getStructuringElement(MORPH_RECT, Size(3,3));
 	dilate(imgCanny, imgDil, kernel);
