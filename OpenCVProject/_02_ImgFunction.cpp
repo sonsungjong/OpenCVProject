@@ -51,10 +51,10 @@ public:
 	}
 };
 
-int main() {
+int mainFunc() {
 	EditImg ei;
 
-	ei._Init("../Resources/test.png");
+	ei._Init("../Resources/test.png");		// √ ±‚»≠
 	ei._Show("Origin");
 	ei._Gray("Gray");
 	ei._GaussianBlur("Blur");
